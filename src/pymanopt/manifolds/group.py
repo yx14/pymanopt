@@ -72,7 +72,7 @@ class _UnitaryBase(RiemannianSubmanifold):
 
     def _retraction_polar(self, point, tangent_vector):
         Y = point + point @ tangent_vector
-        u, _, vt = np.linalg.svd(Y)
+        u, _, vt = np.linalg.svd(Y, lapack_driver='gesvd')
         return u @ vt
 
     def exp(self, point, tangent_vector):

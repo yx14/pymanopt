@@ -171,6 +171,13 @@ class TrustRegions(Optimizer):
         while True:
             iteration += 1
 
+            self._add_log_entry(
+                iteration=iteration,
+                point=x,
+                cost=fx,
+                gradient_norm=norm_grad,
+            )
+            
             # *************************
             # ** Begin TR Subproblem **
             # *************************
