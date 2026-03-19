@@ -1,4 +1,5 @@
 import numpy as np
+import scipy as scp
 import scipy.special
 
 from pymanopt.manifolds.manifold import RiemannianSubmanifold
@@ -72,7 +73,7 @@ class _UnitaryBase(RiemannianSubmanifold):
 
     def _retraction_polar(self, point, tangent_vector):
         Y = point + point @ tangent_vector
-        u, _, vt = np.linalg.svd(Y, lapack_driver='gesvd')
+        u, _, vt = scp.linalg.svd(Y, lapack_driver='gesvd')
         return u @ vt
 
     def exp(self, point, tangent_vector):
